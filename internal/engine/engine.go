@@ -134,7 +134,6 @@ func (e *Engine) tick(ctx context.Context) {
 		e.logger.Error("preempt expired claims failed", err)
 		e.incErrors()
 	} else if len(preemptResults) > 0 {
-		preemptResults = preemptResults[:0]
 		s.addPreempted(len(preemptResults))
 		e.logger.Info("preempted expired task claims", apperr.F("count", len(preemptResults)))
 		// Reassign preempted tasks for new executors.

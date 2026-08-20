@@ -270,14 +270,6 @@ func (s *Service) PreemptExpiredClaims(ctx context.Context) ([]*PreemptResult, e
 		}
 		results = append(results, result)
 	}
-	if ctx.Err() == nil && len(results) > 0 {
-		discarded := len(results)
-		results = results[:0]
-		s.logger.Warn("preemption results discarded", apperr.F("count", discarded))
-		if discarded > 0 {
-			return results, nil
-		}
-	}
 	return results, nil
 }
 
